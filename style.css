@@ -1,0 +1,173 @@
+body {
+	font-family: Arial, sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+p {
+	margin-top: 20px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.screen-container {
+	display: flex;
+	justify-content: center;
+	margin: 10px 0 40px;
+}
+
+.screen {
+	width: 70vw;
+	height: 70px;
+	background-color: hsl(222, 43%, 85%);
+	color: #333;
+	text-align: center;
+	line-height: 40px;
+	font-weight: bold;
+	font-size: 18px;
+	clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 5% 100%);
+}
+
+.seat {
+	width: 30px;
+	height: 30px;
+	margin: 2px;
+	background-color: #d8e0f3;
+	color: #1d1d3d;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 10px;
+	box-sizing: border-box;
+}
+
+.seat.selected {
+	color: #fff;
+	border: 1px solid #6c9;
+	background-color: rgb(19, 141, 80);
+}
+
+.seat.unavailable {
+	background-color: #ddd;
+	color: #777;
+}
+
+.sector {
+	background-color: #d8e0f3;
+	color: #424264;
+	margin: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 80px;
+	height: 80px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+#sector-2,
+#sector-5,
+#sector-8 {
+	width: 200px;
+}
+
+#sector-7,
+#sector-8,
+#sector-9 {
+	height: 140px;
+}
+
+/* Large screen layout */
+#seating-container {
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	gap: 20px;
+}
+
+.seat-grid {
+	display: grid;
+	gap: 5px;
+}
+
+button {
+	margin: 10px;
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+/* Hide sectors & back button by default on large screens */
+.sector,
+#back-button {
+	display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	#seating-container {
+		gap: 5px;
+	}
+
+	.screen {
+		width: 50vw;
+		height: 40px;
+	}
+
+	.sector {
+		display: flex;
+		margin: 2px;
+	}
+
+	/* Hide seat grids by default on small screens */
+	.seat-grid {
+		display: none;
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	/* Display seat grid of selected sector */
+	.seat-grid.visible {
+		display: grid;
+		margin-top: 20px;
+	}
+
+	/* Hide all sectors when a specific sector is selected */
+	.sector.hidden {
+		display: none;
+	}
+
+	#back-button {
+		display: none;
+		background-color: #fff;
+		border: 2px solid #007bff;
+		color: #007bff;
+		font-weight: bold;
+	}
+
+	#back-button.visible {
+		display: block;
+	}
+}
+
+@media (max-width: 630px) {
+	.screen {
+		width: 70vw;
+	}
+}
+
+@media (max-width: 520px) {
+	#back-button {
+		margin-left: 10px;
+	}
+}
+
+#controls {
+	margin: 20px;
+	display: flex;
+}
